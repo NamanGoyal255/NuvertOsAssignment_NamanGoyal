@@ -27,8 +27,13 @@
 
       <!-- Right buttons -->
       <div class="d-flex align-items-center">
-        <a class="btn btn-link nav-btn-custom me-2" [routerLink]="['/login']">Login</a>
-        <a class="btn btn-primary nav-btn-custom text-white" [routerLink]="['/signup']">Signup</a>
+        <ng-container *ngIf="!loggedIn; else loggedInTemplate">
+          <a class="btn btn-link nav-btn-custom me-2" [routerLink]="['/login']">Login</a>
+          <a class="btn btn-primary nav-btn-custom text-white" [routerLink]="['/signup']">Signup</a>
+        </ng-container>
+        <ng-template #loggedInTemplate>
+          <button class="btn btn-danger nav-btn-custom text-white" (click)="logout()">Logout</button>
+        </ng-template>
       </div>
     </div>
   </div>
