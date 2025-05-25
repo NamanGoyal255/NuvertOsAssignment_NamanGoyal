@@ -1,0 +1,73 @@
+<div class="edit-container edit-compound d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4 shadow-sm" style="width: 100%; max-width: 600px;">
+    <h2 class="mb-4 text-center fw-bold">Edit Compound</h2>
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Enter compound name"
+          formControlName="name"
+        />
+      </div>
+      
+      <!-- Image URL -->
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input
+          type="text"
+          id="image"
+          class="form-control"
+          placeholder="Enter image URL"
+          formControlName="image"
+        />
+        <img
+          *ngIf="form.value.image"
+          [src]="form.value.image"
+          alt="Compound image"
+          class="img-fluid mt-2 border rounded"
+          style="max-height: 200px"
+        />
+      </div>
+      
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          rows="5"
+          class="form-control"
+          placeholder="Enter compound description"
+          formControlName="description"
+        ></textarea>
+      </div>
+      
+      <!-- Messages -->
+      <div *ngIf="successMessage" class="alert alert-success" role="alert">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+      
+      <!-- Save Button -->
+      <button
+        type="submit"
+        class="save-button w-100"
+        [disabled]="form.invalid || isSubmitting"
+      >
+        <span
+          *ngIf="isSubmitting"
+          class="spinner-border spinner-border-sm me-2"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+/* Carousel height */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+  height: 100vh;
+}
+
+/* Carousel backgrounds */
+.carousel-item:nth-child(1) {
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-item:nth-child(2) {
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.carousel-item:nth-child(3) {
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Navbar */
+.custom-navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+/* Hero text styling */
+.hero-content h1 {
+  font-size: 3rem;
+}
+.hero-content p {
+  font-size: 1.25rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #28a745;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #218838;
+}
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Responsive navbar margin fix */
+@media (min-width: 992px) {
+  #introCarousel {
+    margin-top: -58.59px;
+  }
+}
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.carousel-item .mask {
+  height: 100vh;
+}

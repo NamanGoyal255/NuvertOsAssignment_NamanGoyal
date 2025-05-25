@@ -1,0 +1,79 @@
+/* Your existing styles */
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+/* New styles for improved UI */
+.register-container {
+  background: #f5f7fa; /* subtle light background */
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #0d6efd; /* Bootstrap primary blue */
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.25);
+  outline: none;
+}
+
+.btn-primary {
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #0b5ed7;
+  box-shadow: 0 4px 12px rgba(11, 94, 215, 0.4);
+}
+
+.alert {
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+/* Input field focus styling */
+.input-group input:focus {
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.4);
+  border-color: #0d6efd;
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+}
+
+/* Toast styling */
+.toast {
+  z-index: 1055;
+  min-width: 250px;
+}
+
+/* Card animation */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+@media (max-width: 576px) {
+  .card {
+    padding: 1rem !important;
+  }
+}

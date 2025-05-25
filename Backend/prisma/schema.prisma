@@ -18,7 +18,7 @@ model Compound {
   id          Int     @id @default(autoincrement())
   name        String
   image       String?
-  description String?
+  description String? @db.Text
 }
 
 model User {

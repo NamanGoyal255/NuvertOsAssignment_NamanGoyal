@@ -1,0 +1,39 @@
+<div *ngIf="isLoading" class="loading">Working on the page...</div>
+
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="!isLoading && compounds.length > 0" class="page">
+  <div class="cards-container">
+  <div
+    *ngFor="let compound of compounds"
+    class="compound-card"
+    (click)="goToCompound(compound.id)"
+  >
+    <img
+    class=""
+    [src]="compound.image"
+    alt="{{ compound.name }}"
+    width="200"
+    height="200"
+    
+    />  
+    <h2 class="card-name">{{compound.name}}</h2>
+  </div>
+</div>
+ <!-- Pagination buttons -->
+  <div class="pagination-buttons" style="margin-top: 1rem; text-align: center;">
+    <button class="prev-btn" mat-raised-button color="primary" (click)="prevPage()" [disabled]="page === 1">
+      &laquo; Previous
+    </button>
+    <button class="next-btn" mat-raised-button color="primary" (click)="nextPage()" [disabled]="page >= Math.ceil(total / pageSize)">
+      Next &raquo;
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="!isLoading && compounds.length === 0">
+  No compounds found.
+</div>

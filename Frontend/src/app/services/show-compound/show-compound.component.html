@@ -1,0 +1,8 @@
+<div *ngIf="compound" class="compound">
+  <h2>{{ compound.name }}</h2>
+  <img [src]="compound.image" alt="{{ compound.name }}" />
+  <p>{{ compound.description }}</p>
+
+  <button (click)="editCompound()">Edit Details &raquo;</button>
+
+</div>

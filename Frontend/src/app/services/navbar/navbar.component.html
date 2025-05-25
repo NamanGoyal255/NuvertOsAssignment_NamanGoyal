@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container">
+    <!-- Brand (optional) -->
+    <!-- <a class="navbar-brand" href="#">Brand</a> -->
+
+    <!-- Toggler -->
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarButtonsExample"
+      aria-controls="navbarButtonsExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link nav-link-custom" [routerLink]="['/compounds']">Compounds</a>
+        </li>
+      </ul>
+
+      <!-- Right buttons -->
+      <div class="d-flex align-items-center">
+        <a class="btn btn-link nav-btn-custom me-2" [routerLink]="['/login']">Login</a>
+        <a class="btn btn-primary nav-btn-custom text-white" [routerLink]="['/signup']">Signup</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
