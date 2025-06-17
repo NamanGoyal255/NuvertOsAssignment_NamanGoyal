@@ -69,9 +69,21 @@ const create = async (req, res) => {
   }
 };
 
+const createMAny=async (req,res)=>
+{
+const compoundArray=req.body;
+
+ const compound=await prisma.compound.createMany({
+    data:compoundArray
+  });
+  res.status(201).json(compound);
+
+}
+
 module.exports = {
   getAll,
   getOne,
   update,
-  create
+  create,
+  createMAny
 };
