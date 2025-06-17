@@ -1,8 +1,18 @@
-<div *ngIf="compound" class="compound">
-  <h2>{{ compound.name }}</h2>
-  <img [src]="compound.image" alt="{{ compound.name }}" />
-  <p>{{ compound.description }}</p>
+<div *ngIf="compound" class="flex flex-col items-center justify-center gap-5 pt-5 px-48 bg-gradient-to-r from-white to-blue-100">
+  <h2 class="text-3xl font-semibold">{{ compound.name }}</h2>
 
-  <button (click)="editCompound()">Edit Details &raquo;</button>
+  <img 
+    [src]="compound.image" 
+    [alt]="compound.name"
+    class="w-[600px] h-[400px] object-contain border border-black rounded-md"
+  />
 
+  <p class="text-xl text-center">{{ compound.description }}</p>
+
+  <button 
+    (click)="editCompound()" 
+    class="rounded-md px-4 py-2 bg-beige hover:opacity-70 transition"
+  >
+    Edit Details &raquo;
+  </button>
 </div>

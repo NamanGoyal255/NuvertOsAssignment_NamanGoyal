@@ -1,39 +1,62 @@
-<div *ngIf="isLoading" class="loading">Working on the page...</div>
+<!-- Loading message -->
+<div *ngIf="isLoading" class="text-center text-lg text-gray-600 py-6 animate-pulse">
+  Working on the page...
+</div>
 
-<div *ngIf="errorMessage" class="error">
+<!-- Error message -->
+<div *ngIf="errorMessage" class="text-red-600 text-center font-medium py-4">
   {{ errorMessage }}
 </div>
 
-<div *ngIf="!isLoading && compounds.length > 0" class="page">
-  <div class="cards-container">
-  <div
-    *ngFor="let compound of compounds"
-    class="compound-card"
-    (click)="goToCompound(compound.id)"
-  >
-    <img
-    class=""
-    [src]="compound.image"
-    alt="{{ compound.name }}"
-    width="200"
-    height="200"
-    
-    />  
-    <h2 class="card-name">{{compound.name}}</h2>
+<!-- Compounds list -->
+<div *ngIf="!isLoading && compounds.length > 0" class="p-4">
+  <div class="flex flex-wrap justify-center gap-6">
+    <div
+      *ngFor="let compound of compounds"
+      class="w-72 p-5 bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer relative overflow-hidden group"
+      (click)="goToCompound(compound.id)"
+    >
+      <!-- Gradient line -->
+      <div class="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate-gradient-x"></div>
+
+      <!-- Image -->
+      <img
+        [src]="compound.image"
+        alt="{{ compound.name }}"
+        class="w-full h-52 object-contain rounded-xl bg-gray-100 mb-4 transition-transform duration-300 group-hover:scale-105"
+      />
+
+      <!-- Name -->
+      <h2 class="text-xl font-semibold text-slate-800 text-center capitalize transition-colors duration-300 group-hover:text-transparent bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-500 group-hover:to-purple-500">
+        {{ compound.name }}
+      </h2>
+    </div>
   </div>
-</div>
- <!-- Pagination buttons -->
-  <div class="pagination-buttons" style="margin-top: 1rem; text-align: center;">
-    <button class="prev-btn" mat-raised-button color="primary" (click)="prevPage()" [disabled]="page === 1">
+
+  <!-- Pagination Buttons -->
+  <div class="mt-6 text-center flex justify-center gap-4">
+    <button
+      class="px-4 py-2 rounded-md bg-gray-200 text-black hover:opacity-80 disabled:opacity-50"
+      mat-raised-button
+      color="primary"
+      (click)="prevPage()"
+      [disabled]="page === 1"
+    >
       &laquo; Previous
     </button>
-    <button class="next-btn" mat-raised-button color="primary" (click)="nextPage()" [disabled]="page >= Math.ceil(total / pageSize)">
+    <button
+      class="px-4 py-2 rounded-md bg-blue-400 text-black hover:opacity-80 disabled:opacity-50"
+      mat-raised-button
+      color="primary"
+      (click)="nextPage()"
+      [disabled]="page >= Math.ceil(total / pageSize)"
+    >
       Next &raquo;
     </button>
   </div>
 </div>
 
-
-<div *ngIf="!isLoading && compounds.length === 0">
+<!-- No compounds message -->
+<div *ngIf="!isLoading && compounds.length === 0" class="text-center text-gray-500 py-6">
   No compounds found.
 </div>

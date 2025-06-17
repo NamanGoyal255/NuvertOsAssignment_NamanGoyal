@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
-  private cookieService = inject(CookieService);
+  constructor(private router: Router, private authService: AuthService) {}
   http = inject(HttpClient);
 
   userForm: UserData = {
@@ -34,7 +33,7 @@ export class LoginComponent {
           this.toastSuccess = true;
           this.toastMessage = 'Login successful! Redirecting...';
           this.showToast = true;
-          this.cookieService.set("authToken", res.token, 1); // Expires in 1 day
+          this.authService.setToken(res.token); // ✅ Updated
           this.router.navigate(['/compounds']);
         } else {
           this.toastSuccess = false;
@@ -51,7 +50,6 @@ export class LoginComponent {
     });
   }
 }
-
 
 interface UserData {
   email: string;

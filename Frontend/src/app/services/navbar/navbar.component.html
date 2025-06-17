@@ -1,41 +1,33 @@
-<nav class="navbar navbar-expand-lg custom-navbar">
-  <div class="container">
-    <!-- Brand (optional) -->
-    <!-- <a class="navbar-brand" href="#">Brand</a> -->
-
-    <!-- Toggler -->
-    <button
-      data-mdb-collapse-init
-      class="navbar-toggler"
-      type="button"
-      data-mdb-target="#navbarButtonsExample"
-      aria-controls="navbarButtonsExample"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarButtonsExample">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link nav-link-custom" [routerLink]="['/compounds']">Compounds</a>
-        </li>
-      </ul>
-
-      <!-- Right buttons -->
-      <div class="d-flex align-items-center">
-        <ng-container *ngIf="!loggedIn; else loggedInTemplate">
-          <a class="btn btn-link nav-btn-custom me-2" [routerLink]="['/login']">Login</a>
-          <a class="btn btn-primary nav-btn-custom text-white" [routerLink]="['/signup']">Signup</a>
-        </ng-container>
-        <ng-template #loggedInTemplate>
-          <button class="btn btn-danger nav-btn-custom text-white" (click)="logout()">Logout</button>
-        </ng-template>
-      </div>
+<nav class="bg-[#e3f2fd] px-6 py-3 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    
+    <!-- Left Side: Navigation Links -->
+    <div class="flex items-center space-x-6 text-blue-900 font-semibold text-lg">
+      <a class="hover:text-blue-700 transition" [routerLink]="['/compounds']">Compounds</a>
     </div>
+
+    <!-- Right Side: Auth Buttons -->
+    <div class="flex items-center gap-4">
+      <ng-container *ngIf="!loggedIn; else loggedInTemplate">
+        <a
+          [routerLink]="['/login']"
+          class="text-blue-600 font-medium hover:text-blue-800 transition"
+        >Login</a>
+        <a
+          [routerLink]="['/signup']"
+          class="bg-blue-600 text-white font-medium px-4 py-2 rounded hover:bg-blue-700 transition"
+        >Signup</a>
+      </ng-container>
+      <ng-template #loggedInTemplate>
+        <button
+          (click)="logout()"
+          class="bg-red-600 text-white font-medium px-4 py-2 rounded hover:bg-red-700 transition"
+        >
+          Logout
+        </button>
+      </ng-template>
+    </div>
+    
   </div>
 </nav>
 <router-outlet></router-outlet>
